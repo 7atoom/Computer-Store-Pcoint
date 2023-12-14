@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pcoint</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="../css/swiper.min.css">
+
+    <!-- awesome font -->
+    <link rel="stylesheet" href="../css/all.min.css">
+
+</head>
+
+<body>
+
+
+    <!-- login section -->
+    <div class="login">
+        <div class="container">
+            <div class="up-container" id="up-container">
+                <form class="form" id="up-form" method="post" action="index.html">
+                    <h2 class="form-title title">Sign up to PCOINT</h2>
+                    <div class="socials">
+                        <a class="socials-link" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="socials-link" href="#"><i class="fab fa-google"></i></a>
+                        <a class="socials-link" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <input class="form-input" type="text" placeholder="Name" name="username">
+                    <input class="form-input" type="text" placeholder="Email" name="email">
+                    <input class="form-input" type="password" placeholder="Password" name="password">
+                    <button class="form-button button switch-btn" type="submit" name="signup" formaction="index.html">SIGN UP</button>
+                </form>
+            </div>
+            <div class="in-container" id="in-container">
+                <div class="logo">
+                    <img src="../images/logo.png" alt="">
+                </div>
+                <form class="form" id="in-form" method="post" action="index.html">
+                    <h2 class="form-title title">Sign in to PCOINT</h2>
+                    <div class="socials">
+                        <a class="socials-link" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="socials-link" href="#"><i class="fab fa-google"></i></a>
+                        <a class="socials-link" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <input class="form-input" type="text" placeholder="Email" name="email">
+                    <input class="form-input" type="password" placeholder="Password" name="password"><a class="form-link">Forgot your password?</a>
+                    <button class="form-button button signin-btn" name="signin" formaction="index.html">SIGN IN</button>
+                </form>
+            </div>
+            <div class="switch" id="switch-cnt">
+                <div class="switch-container  singin-container" id="switch-c1">
+
+                    <!-- <div class="logo">
+                        <img src="../images/logo(w).png" alt="">
+                    </div> -->
+                    <h2 class="switch-title title">Welcome Back !</h2>
+                    <p class="switch-description description">Sign in to catch all the new offers and see our new available products we are happy to see you again! </p>
+                    <button class="switch-button button signup-btn" id="bc1">SIGN IN</button>
+                </div>
+                <div class="switch-container active signup-container" id="switch-c2">
+                    <h2 class="switch-title title">Hello Friend !</h2>
+                    <p class="switch-description description">Is this your first time here ? Unlock Exclusive Deals and Join website Today to get a notifications with all new offersand arrivals !</p>
+                    <button class="switch-button button switch-btn" id="bc2">SIGN UP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper js -->
+    <script src="../js/swiper.min.js"></script>
+
+    <!-- js -->
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>
