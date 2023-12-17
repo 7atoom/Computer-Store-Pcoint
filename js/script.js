@@ -74,3 +74,6 @@ allButtons.forEach((button) => {
     button.addEventListener("click", getButtons);
     button.addEventListener("click", changeForm);
 });
+
+
+//////////////////////////login form validation//////////////////////////
