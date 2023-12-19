@@ -25,33 +25,49 @@
     <div class="login">
         <div class="container">
             <div class="up-container" id="up-container">
-                <form class="form" id="up-form" method="post" action="index.html">
+                <form class="form" id="up-form" action="/">
                     <h2 class="form-title title">Sign up to PCOINT</h2>
                     <div class="socials">
                         <a class="socials-link" href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="socials-link" href="#"><i class="fab fa-google"></i></a>
                         <a class="socials-link" href="#"><i class="fab fa-twitter"></i></a>
                     </div>
-                    <input class="form-input " type="text" placeholder="Name" name="username">
-                    <input class="form-input up-email" type="text" placeholder="Email" name="email">
-                    <input class="form-input up-password" type="password" placeholder="Password" name="password">
-                    <input type="submit" name="" id="" value="Sign Up">
+                    <div class="input-control">
+                        <input class="form-input user" id="user-name" type="text" placeholder="Name" name="username">
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-control">
+                        <input class="form-input email" id="up-email" type="text" placeholder="Email" name="email">
+                        <div class="error "></div>
+                    </div>
+                    <div class="input-control">
+                        <input class="form-input pass" id="up-password" type="password" placeholder="Password" name="password">
+                        <div class="error"></div>
+                    </div>
+                    <input class="submit-btn" type="submit" name="" id="submit" value="Sign Up">
                 </form>
             </div>
             <div class="in-container" id="in-container">
                 <div class="logo">
                     <img src="images/logo.png" alt="">
                 </div>
-                <form class="form" id="in-form" method="post" action="index.html">
+                <form class="form" id="in-form" action="/">
                     <h2 class="form-title title">Sign in to PCOINT</h2>
                     <div class="socials">
                         <a class="socials-link" href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="socials-link" href="#"><i class="fab fa-google"></i></a>
                         <a class="socials-link" href="#"><i class="fab fa-twitter"></i></a>
                     </div>
-                    <input class="form-input login-email" type="text" placeholder="Email" name="email">
-                    <input class="form-input login-password" type="password" placeholder="Password" name="password"><a class="form-link">Forgot your password?</a>
-                    <input type="submit" name="" id="" value="Sign In">
+                    <div class="input-control">
+                        <input class="form-input email" id="in-email" type="text" placeholder="Email" name="email">
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-control">
+                        <input class="form-input pass" id="in-password" type="password" placeholder="Password" name="password">
+                        <div class="error"></div>
+                        <a class="form-link">Forgot your password?</a>
+                    </div>
+                    <input class="submit-btn" type="submit" name="" id="submit" value="Sign In">
                 </form>
             </div>
             <div class="switch" id="switch-cnt">
