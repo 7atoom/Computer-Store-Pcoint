@@ -146,7 +146,7 @@ let checkSignInInputs = () => {
         setSuccess(SignUpPassword);
     }
 
-    if (UserNameValue !== "" && SignUpEmailValue !== "" && SignUpPasswordValue !== "") {
+    if (UserNameValue !== "" && SignUpEmailValue !== "" && SignUpPasswordValue !== "" && passwordRegex.test(SignUpPasswordValue) && emailRegex.test(SignUpEmailValue) && SignUpPasswordValue.length >= 8) {
         window.location.href = "index.html";
     }
 };
@@ -183,7 +183,7 @@ let checkSignUpInputs = () => {
         setSuccess(SignInPassword);
     }
 
-    if (SignInEmailValue !== "" && SignInPasswordValue !== "") {
+    if (SignInEmailValue !== "" && SignInPasswordValue !== "" && passwordRegex.test(SignInPasswordValue) && emailRegex.test(SignInEmailValue) && SignInPasswordValue.length >= 8) {
         window.location.href = "index.html";
     }
 };
