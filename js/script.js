@@ -1,189 +1,73 @@
 //////////////////////////get the data from the server//////////////////////////
+let reviewsCnt = document.getElementById("slides");
 let quotes = document.getElementsByClassName("quote");
+let bulletsCnt = document.getElementsByClassName("bullets");
 let bullets = document.getElementsByClassName("swiper-btn");
-let switchCnt = document.getElementById("switch-cnt");
-let signInCnt = document.getElementById("switch-c1");
-let signUpCnt = document.getElementById("switch-c2");
-let signInSwitch = document.getElementById("bc1");
-let signUpSwitch = document.getElementById("bc2");
-let allButtons = document.querySelectorAll(".button");
 
-
-
+let currentIndex = 0;
 
 //////////////////////////function start//////////////////////////
-for (let i = 0; i < bullets.length; i++) {
-    bullets[i].addEventListener("click", function() {
-        // Remove active class from all bullets
-        for (let j = 0; j < bullets.length; j++) {
-            bullets[j].classList.remove("active");
-            quotes[j].classList.remove("active");
-        }
 
-        // Add active class to the clicked bullet
-        this.classList.add("active");
-        quotes[i].classList.add("active");
-    });
+function changeQuote() {
+    // Remove active class from all bullets and quotes
+    for (let i = 0; i < bullets.length; i++) {
+        bullets[i].classList.remove("active");
+        quotes[i].classList.remove("active");
+    }
+
+    // Add active class to the next bullet and quote
+    currentIndex = (currentIndex + 1) % bullets.length;
+    bullets[currentIndex].classList.add("active");
+    quotes[currentIndex].classList.add("active");
 }
 
-let getButtons = (e) => e.preventDefault()
+// Set interval to change quote every 3 seconds (adjust as needed)
+setInterval(changeQuote, 4000);
 
 
-let changeForm = (e) => {
-    e.preventDefault();
-    switchCnt.classList.add("is-gx");
-    setTimeout(function() {
-        switchCnt.classList.remove("is-gx");
-    }, 300);
 
-    // if (signUpSwitch.classList.contains("active")) {
-    //     signUpSwitch.classList.remove("active");
-    //     signInSwitch.classList.add("active");
-    //     signUpCnt.classList.remove("active");
-    //     signInCnt.classList.add("active");
-    //     signInCnt.style.zIndex = "201";
-    //     signUpCnt.style.zIndex = "200";
-    //     switchCnt.classList.toggle("active");
-    // } else {
-    //     signInSwitch.classList.remove("active");
-    //     signUpSwitch.classList.add("active");
-    //     signInCnt.classList.remove("active");
-    //     signUpCnt.classList.add("active");
-    //     switchCnt.classList.toggle("active");
-    //     signUpCnt.style.zIndex = "201";
-    //     signInCnt.style.zIndex = "200";
-    // }
-}
+/////////////////////////// create a new review ///////////////////////////
+let reviewName = document.getElementById("review-name");
+let reviewEmail = document.getElementById("review-email");
+let reviewMessage = document.getElementById("review-message");
+let reviewBtn = document.getElementById("submit-review");
 
-signUpSwitch.addEventListener("click", function() {
-    signUpCnt.classList.toggle("active");
-    signInCnt.classList.toggle("active");
-    switchCnt.classList.toggle("active");
-    signInCnt.style.zIndex = "201";
-    signUpCnt.style.zIndex = "200";
-});
-signInSwitch.addEventListener("click", function() {
-    signInCnt.classList.toggle("active");
-    signUpCnt.classList.toggle("active");
-    switchCnt.classList.toggle("active");
-    signInCnt.style.zIndex = "200";
-    signUpCnt.style.zIndex = "201";
+let reviewNameValue = reviewName.value.trim();
+let reviewEmailValue = reviewEmail.value.trim();
+let reviewMessageValue = reviewMessage.value.trim();
+
+reviewBtn.addEventListener("click", function() {
+    createReview(reviewNameValue, reviewEmailValue, reviewMessageValue);
+    createBullet();
 });
 
-allButtons.forEach((button) => {
-    button.addEventListener("click", getButtons);
-    button.addEventListener("click", changeForm);
-});
+let createReview = (name, email, message) => {
+    let review = document.createElement("div");
+    review.classList.add("quote");
+    let reviewNameCnt = document.createElement("div");
+    reviewNameCnt.classList.add("name");
+    let reviewName = document.createElement("h3");
+    reviewName.innerText = name;
+    let reviewMessageCnt = document.createElement("div");
+    reviewMessageCnt.classList.add("text");
+    let reviewQoute1 = document.createElement("img");
+    reviewQoute1.src = "../images/te1.png";
+    let reviewMessage = document.createElement("p");
+    reviewMessage.innerText = message;
+    let reviewQoute2 = document.createElement("img");
+    reviewQoute2.src = "../images/te2.png";
 
-
-//////////////////////////login form validation//////////////////////////
-let SignUpForm = document.getElementById("up-form");
-let SignInForm = document.getElementById("in-form");
-let userName = document.getElementById("user-name");
-let SignUpEmail = document.getElementById("up-email");
-let SignUpPassword = document.getElementById("up-password");
-let SignInEmail = document.getElementById("in-email");
-let SignInPassword = document.getElementById("in-password");
-
-let EmailError = document.getElementById("email-error");
-let PasswordError = document.getElementById("password-error");
-
-let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-let passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[_])[a-zA-Z0-9_]+$/;
-
-let setError = (input, message) => {
-    let inputControl = input.parentElement;
-    let errorDisplay = inputControl.querySelector(".error");
-
-    errorDisplay.innerText = message;
-    inputControl.classList.add("error");
-    inputControl.classList.remove("success");
+    reviewNameCnt.appendChild(reviewName);
+    reviewMessageCnt.appendChild(reviewQoute1);
+    reviewMessageCnt.appendChild(reviewMessage);
+    reviewMessageCnt.appendChild(reviewQoute2);
+    review.appendChild(reviewNameCnt);
+    review.appendChild(reviewMessageCnt);
+    reviewsCnt.appendChild(review);
 };
 
-let setSuccess = (input) => {
-    let inputControl = input.parentElement;
-    let errorDisplay = inputControl.querySelector(".error");
-
-    errorDisplay.innerText = "";
-    inputControl.classList.add("success");
-    inputControl.classList.remove("error");
-};
-
-// sign up form validation
-
-SignUpForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    checkSignInInputs();
-});
-
-
-let checkSignInInputs = () => {
-    let UserNameValue = userName.value.trim();
-    let SignUpEmailValue = SignUpEmail.value.trim();
-    let SignUpPasswordValue = SignUpPassword.value.trim();
-
-    if (UserNameValue === "") {
-        setError(userName, "User Name cannot be blank");
-    } else {
-        setSuccess(userName);
-    }
-
-    if (SignUpEmailValue === "") {
-        setError(SignUpEmail, "Email cannot be blank");
-    } else if (!emailRegex.test(SignUpEmailValue)) {
-        setError(SignUpEmail, "Email is not valid");
-    } else {
-        setSuccess(SignUpEmail);
-    }
-
-    if (SignUpPasswordValue === "") {
-        setError(SignUpPassword, "Password cannot be blank");
-    } else if (!passwordRegex.test(SignUpPasswordValue)) {
-        setError(SignUpPassword, "Password is not valid");
-    } else if (SignUpPasswordValue.length < 8) {
-        setError(SignUpPassword, "Password must be 8 characters long");
-    } else {
-        setSuccess(SignUpPassword);
-    }
-
-    if (UserNameValue !== "" && SignUpEmailValue !== "" && SignUpPasswordValue !== "" && passwordRegex.test(SignUpPasswordValue) && emailRegex.test(SignUpEmailValue) && SignUpPasswordValue.length >= 8) {
-        window.location.href = "index.html";
-    }
-};
-
-
-// sign in form validation
-
-SignInForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        checkSignUpInputs();
-    }
-
-);
-
-let checkSignUpInputs = () => {
-    let SignInEmailValue = SignInEmail.value.trim();
-    let SignInPasswordValue = SignInPassword.value.trim();
-
-    if (SignInEmailValue === "") {
-        setError(SignInEmail, "Email cannot be blank");
-    } else if (!emailRegex.test(SignInEmailValue)) {
-        setError(SignInEmail, "Email is not valid");
-    } else {
-        setSuccess(SignInEmail);
-    }
-
-    if (SignInPasswordValue === "") {
-        setError(SignInPassword, "Password cannot be blank");
-    } else if (!passwordRegex.test(SignInPasswordValue)) {
-        setError(SignInPassword, "Password is not valid");
-    } else if (SignInPasswordValue.length < 8) {
-        setError(SignInPassword, "Password must be 8 characters long");
-    } else {
-        setSuccess(SignInPassword);
-    }
-
-    if (SignInEmailValue !== "" && SignInPasswordValue !== "" && passwordRegex.test(SignInPasswordValue) && emailRegex.test(SignInEmailValue) && SignInPasswordValue.length >= 8) {
-        window.location.href = "index.html";
-    }
+let createBullet = () => {
+    let bullet = document.createElement("div");
+    bullet.classList.add("swiper-btn");
+    bulletsCnt.appendChild(bullet);
 };

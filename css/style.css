@@ -1607,7 +1607,25 @@ footer .container .links .contact ul li a span svg {
     align-items: left;
 }
 
-.get-touch .container .form-container form input {
+.get-touch .container .form-container form .input-control {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.get-touch .container .form-container form .input-control.error .form-input {
+    border: 3px solid #e74c3c;
+    transition: all 1s ease;
+}
+
+.get-touch .container .form-container form .input-control.success .form-input {
+    border: 3px solid #2ecc71;
+    transition: all 1s ease;
+}
+
+.get-touch .container .form-container form .input-control input {
     width: 100%;
     height: 55px;
     border-radius: 20px;
@@ -1623,16 +1641,11 @@ footer .container .links .contact ul li a span svg {
     margin-right: auto;
 }
 
-.get-touch .container .form-container form input:focus {
-    border: 2px solid var(--primary-color);
-    background-color: white;
-}
-
 .get-touch .container .form-container form input:focus::placeholder {
     color: var(--primary-color);
 }
 
-.get-touch .container .form-container form textarea {
+.get-touch .container .form-container form .input-control textarea {
     width: 100%;
     height: 150px;
     border-radius: 20px;
@@ -1648,6 +1661,17 @@ footer .container .links .contact ul li a span svg {
     margin-right: auto;
 }
 
+.get-touch .container .form-container form .input-control .error {
+    color: #ada8a7;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 95%;
+    transition: all 0.5s ease;
+}
+
 .get-touch .container .form-container form textarea:focus {
     border: 2px solid var(--primary-color);
     background-color: white;
@@ -1657,7 +1681,7 @@ footer .container .links .contact ul li a span svg {
     color: var(--primary-color);
 }
 
-.get-touch .container .form-container form .form-button {
+.get-touch .container .form-container form .submit-btn {
     background-color: var(--primary-color);
     color: white;
     padding: 18px 40px;
@@ -1670,13 +1694,14 @@ footer .container .links .contact ul li a span svg {
     border: none;
     margin-left: auto;
     /* margin-right: auto; */
+    cursor: pointer;
 }
 
-.get-touch .container .form-container form .form-button:hover {
+.get-touch .container .form-container form .submit-btn:hover {
     background: var(--gradient-1, linear-gradient(180deg, #12E597 0%, #11E697 100%));
 }
 
-.get-touch .container .form-container form .form-button:active {
+.get-touch .container .form-container form .submit-btn:active {
     background: var(--gradient-1, linear-gradient(180deg, #12E597 0%, #11E697 100%));
 }
 
